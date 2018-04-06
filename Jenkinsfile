@@ -1,6 +1,9 @@
 #!groovy
 
 node('maven')  {
+    stage('Checkout Source') {
+        checkout scm
+    }
     stage('Build JAR') {
         sh "mvn package"
         stash name:"jar", includes:"target/inventory-1.0-SNAPSHOT-swarm.jar"
