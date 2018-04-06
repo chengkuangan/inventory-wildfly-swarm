@@ -10,7 +10,7 @@ node('maven')  {
     }
     stage('Build Image') {
         unstash name:"jar"
-        sh "oc start-build nationalparks --from-file=target/inventory-1.0-SNAPSHOT-swarm.jar -n $devProjectName --wait=true"
+        sh "oc start-build inventory-s2i --from-file=target/inventory-1.0-SNAPSHOT-swarm.jar -n coolstore --wait=true"
         //  openshift.withCluster() {
         //    openshift.startBuild("inventory-s2i", "--from-file=target/inventory-1.0-SNAPSHOT-swarm.jar", "--wait")
         //}
